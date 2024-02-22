@@ -11,17 +11,11 @@ public class FileReader {
             while ((data =fr.read()) != -1) {
                 sb.append((char)data);
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         String[] tokens = sb.toString().split("\\s*[:\\n]\\s*");
-        for (String s : tokens) {
-            System.out.println(s);
-        }
-        Profile pr = getProfile(tokens);
-        return pr;
+        return getProfile(tokens);
     }
 
     private static Profile getProfile(String[] tokens) {
